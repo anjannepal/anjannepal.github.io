@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anjan Nepal</title>
+<meta name="description" content="PhD student in Agriculture and Environmental Plant Science at Penn State, researching anaerobic soil disinfestation, organic vegetable production, and weed management.">
+
+<meta property="og:title" content="Anjan Nepal">
+<meta property="og:description" content="PhD student in Agriculture and Environmental Plant Science at Penn State, researching anaerobic soil disinfestation, organic vegetable production, and weed management.">
+<meta property="og:image" content="images/profile.jpg">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:        #fdfdfb;
+    --fg:        #22241f;
+    --muted:     #6c6f66;
+    --rule:      #e2e3dc;
+    --accent:    #2f5d3f;
+    --accent-lt: #f0f4ee;
+    --link:      #2f5d3f;
+    --link-hover:#1d3b27;
+    --thumb-bg:  #eceee7;
+    --maxw:      800px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:        #161815;
+      --fg:        #e6e7e1;
+      --muted:     #9b9e94;
+      --rule:      #2d302a;
+      --accent:    #8fc1a0;
+      --accent-lt: #1d231e;
+      --link:      #8fc1a0;
+      --link-hover:#b4d9c0;
+      --thumb-bg:  #22251f;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--link); text-decoration: none; }
+  a:hover { color: var(--link-hover); text-decoration: underline; }
+
+  /* ---------- Sticky nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 20px;
+  }
+  nav .inner {
+    max-width: var(--maxw); margin: 0 auto;
+    display: flex; flex-wrap: wrap; gap: 4px 22px;
+    align-items: center; min-height: 54px;
+  }
+  nav .brand {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600; font-size: 18px;
+    margin-right: auto; color: var(--fg);
+  }
+  nav .brand:hover { text-decoration: none; }
+  nav a.nl { font-size: 15.5px; color: var(--muted); }
+  nav a.nl:hover { color: var(--accent); text-decoration: none; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 52px 20px 72px; }
+
+  /* ---------- Header ---------- */
+  .header { display: flex; gap: 34px; align-items: flex-start; margin-bottom: 8px; }
+  .header .text { flex: 1 1 auto; min-width: 0; }
+  .header .photo { flex: 0 0 180px; }
+  .header .photo img {
+    width: 180px; height: 180px; object-fit: cover;
+    border-radius: 4px; background: var(--thumb-bg); display: block;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600; font-size: 38px; line-height: 1.15;
+    margin: 0 0 6px; letter-spacing: -0.3px;
+  }
+  .subtitle { color: var(--muted); font-size: 17px; margin: 0 0 18px; }
+  .header p { margin: 0 0 14px; }
+
+  .links { margin-top: 18px; font-size: 16px; }
+  .links a { white-space: nowrap; }
+  .links .sep { color: var(--muted); margin: 0 7px; }
+
+  /* ---------- Sections ---------- */
+  h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600; font-size: 27px;
+    margin: 54px 0 20px; padding-bottom: 9px;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 70px;
+  }
+
+  h3 {
+    font-weight: 600; font-size: 14px;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--muted); margin: 32px 0 14px;
+  }
+
+  /* ---------- Research entries ---------- */
+  .entry { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 32px; }
+  .entry .thumb { flex: 0 0 190px; }
+  .entry .thumb img {
+    width: 190px; height: 128px; object-fit: cover;
+    border-radius: 4px; background: var(--thumb-bg); display: block;
+  }
+  .entry .thumb .placeholder {
+    width: 190px; height: 128px; border-radius: 4px;
+    background: var(--thumb-bg); display: flex;
+    align-items: center; justify-content: center;
+    color: var(--muted); font-size: 12.5px; text-align: center; padding: 10px;
+    line-height: 1.4;
+  }
+  .entry .meta { flex: 1 1 auto; min-width: 0; }
+  .entry .etitle {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600; font-size: 19px; line-height: 1.3;
+    display: block; margin-bottom: 4px;
+  }
+  .entry .where { font-style: italic; color: var(--muted); font-size: 15.5px; margin-bottom: 6px; }
+
+  .tag {
+    display: inline-block; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 3px;
+    background: var(--accent-lt); color: var(--accent);
+    vertical-align: 3px; margin-left: 8px;
+  }
+
+  /* ---------- Publications ---------- */
+  ol.pubs { list-style: none; counter-reset: p; padding: 0; margin: 0; }
+  ol.pubs li {
+    counter-increment: p;
+    position: relative; padding-left: 34px;
+    margin-bottom: 19px; font-size: 16px; line-height: 1.55;
+  }
+  ol.pubs li::before {
+    content: counter(p) ".";
+    position: absolute; left: 0; top: 0;
+    color: var(--muted); font-variant-numeric: tabular-nums;
+  }
+  .me { font-weight: 600; }
+  .jrnl { font-style: italic; }
+
+  ul.plain { padding-left: 21px; margin: 0 0 16px; }
+  ul.plain li { margin-bottom: 7px; }
+
+  ul.tight { padding-left: 21px; margin: 0 0 10px; }
+  ul.tight li { margin-bottom: 3px; }
+
+  /* ---------- CV button ---------- */
+  .cv-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
+  .btn {
+    display: inline-block; padding: 10px 20px; border-radius: 4px;
+    background: var(--accent); color: #fff;
+    font-size: 16px; font-weight: 400;
+  }
+  .btn:hover { text-decoration: none; background: var(--link-hover); color: #fff; }
+  @media (prefers-color-scheme: dark) {
+    .btn { color: #161815; }
+    .btn:hover { color: #161815; }
+  }
+
+  .stamp { color: var(--muted); font-size: 15px; }
+
+  footer {
+    margin-top: 60px; padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px; color: var(--muted);
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 700px) {
+    body { font-size: 16px; }
+    nav .inner { min-height: 48px; padding: 8px 0; gap: 2px 16px; }
+    nav .brand { font-size: 17px; width: 100%; margin-right: 0; }
+    nav a.nl { font-size: 15px; }
+    .wrap { padding: 32px 20px 48px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 23px; margin-top: 42px; }
+    .header { flex-direction: column-reverse; gap: 20px; }
+    .header .photo { flex: none; }
+    .header .photo img { width: 148px; height: 148px; }
+    .entry { flex-direction: column; gap: 12px; }
+    .entry .thumb { flex: none; width: 100%; }
+    .entry .thumb img, .entry .thumb .placeholder { width: 100%; height: auto; aspect-ratio: 3 / 2; }
+  }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="#top">Anjan Nepal</a>
+    <a class="nl" href="#research">Research</a>
+    <a class="nl" href="#publications">Publications</a>
+    <a class="nl" href="#presentations">Presentations</a>
+    <a class="nl" href="#cv">CV</a>
+    <a class="nl" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- ============================================================
+       HEADER
+       Put a square photo (at least 400x400) at images/profile.jpg
+       ============================================================ -->
+  <div class="header">
+    <div class="text">
+      <h1>Anjan Nepal</h1>
+      <p class="subtitle">PhD Student, Agriculture and Environmental Plant Science<br>
+         The Pennsylvania State University</p>
+
+      <p>
+        I study how growers can suppress weeds and soil-borne pests without synthetic
+        fumigants. My dissertation work centers on <b>anaerobic soil disinfestation</b> (ASD)
+        in high tunnel organic vegetable systems, asking how carbon and nitrogen amendments
+        affect weed pressure, yield, and the mineral quality of the crop that follows.
+      </p>
+
+      <p>
+        I work with <a href="https://plantscience.psu.edu/directory/francesco-di-gioia">Dr. Francesco Di Gioia</a>
+        and <a href="https://plantscience.psu.edu/directory/caio-brunharo">Dr. Caio Brunharo</a> at Penn State.
+        Before this I spent four years at Kentucky State University studying soil amendments and
+        heavy metal bioaccumulation in vegetable crops, where I ran ICP-OES elemental analysis
+        on a USDA-funded project.
+      </p>
+
+      <div class="links">
+        <a href="mailto:apn5663@psu.edu">Email</a><span class="sep">/</span><a href="https://orcid.org/0009-0008-1554-0647">ORCID</a><span class="sep">/</span><a href="https://scholar.google.com/citations?user=REPLACE_ME">Scholar</a><span class="sep">/</span><a href="https://www.linkedin.com/in/REPLACE_ME/">LinkedIn</a><span class="sep">/</span><a href="files/Anjan_Nepal_CV.pdf">CV</a>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="images/profile.jpg" alt="Anjan Nepal">
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       RESEARCH
+       Field photos work better than diagrams here. Good candidates:
+       a high tunnel with ASD tarps laid, a weed quadrat count,
+       a kale trial plot, the ICP-OES bench.
+       ============================================================ -->
+  <h2 id="research">Research</h2>
+
+  <div class="entry">
+    <div class="thumb">
+      <div class="placeholder">images/asd-tunnel.jpg<br>tarped high tunnel beds</div>
+    </div>
+    <div class="meta">
+      <span class="etitle">Anaerobic Soil Disinfestation for Weed Suppression<span class="tag">Current</span></span>
+      <div class="where">PhD dissertation · Penn State · 2025–present</div>
+      <p style="margin:0">
+        ASD creates a temporary anaerobic soil environment by incorporating a labile carbon
+        source and sealing the bed under tarp. It is one of the few non-fumigant options
+        available to organic growers, but its effect on the weed seedbank is far less
+        characterized than its effect on pathogens. I am testing how carbon and nitrogen
+        amendment combinations change weed emergence and composition across a high tunnel
+        organic vegetable rotation.
+      </p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="thumb">
+      <div class="placeholder">images/kale-trial.jpg<br>Tuscan kale plots</div>
+    </div>
+    <div class="meta">
+      <span class="etitle">Amendment Effects on Yield and Mineral Profile<span class="tag">Current</span></span>
+      <div class="where">Penn State · presented at ASHS 2026</div>
+      <p style="margin:0">
+        Weed suppression is only useful if the crop that follows is marketable. Alongside
+        the weed work I track yield and the full mineral profile of organic Tuscan kale
+        grown after ASD, so amendment choices can be evaluated on both pest pressure and
+        nutritional quality rather than one in isolation.
+      </p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="thumb">
+      <div class="placeholder">images/icp-oes.jpg<br>ICP-OES analysis</div>
+    </div>
+    <div class="meta">
+      <span class="etitle">Heavy Metal Bioaccumulation in Vegetable Crops</span>
+      <div class="where">Kentucky State University · 2021–2025</div>
+      <p style="margin:0">
+        Soil amendments that improve fertility can also mobilize trace metals into the
+        edible portion of the crop. Across cabbage, mustard, pepper, eggplant, and potato
+        grown under five soil management practices, I quantified Cd, Cu, Zn, and Mo
+        accumulation by ICP-OES, and tested hyperaccumulator-based remediation of amended
+        soils. This work produced five peer-reviewed papers.
+      </p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="thumb">
+      <div class="placeholder">images/outreach.jpg<br>extension / outreach</div>
+    </div>
+    <div class="meta">
+      <span class="etitle">Extension and Science Communication</span>
+      <div class="where">BEST program · FOCCE Scholars · peer review</div>
+      <p style="margin:0">
+        Research on grower practice is only worth doing if it reaches growers. I completed
+        the Broadening Extension through Student Training (BEST) program and the FOCCE
+        Scholars Program, developed educational materials on lead in school drinking water,
+        and serve as a pre-publication reviewer for <i>Advances in Weed Science</i> and
+        <i>Air, Soil and Water Research</i>.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       PUBLICATIONS — newest first. Your name is bolded throughout.
+       ============================================================ -->
+  <h2 id="publications">Publications</h2>
+  <p style="margin-top:-8px; color:var(--muted); font-size:15.5px;">
+    Full list on <a href="https://orcid.org/0009-0008-1554-0647">ORCID</a>.
+  </p>
+
+  <ol class="pubs">
+    <li>
+      Neupane, B., Antonious, G. F., Dawood, M. H., &amp; <span class="me">Nepal, A.</span> (2025).
+      Bioaccumulation of heavy metals in hot pepper grown in biochar and animal
+      manure-amended soil. <span class="jrnl">Environmental Pollution and Management</span>.
+      <a href="https://doi.org/10.1016/j.epm.2025.09.006">doi:10.1016/j.epm.2025.09.006</a>
+    </li>
+    <li>
+      Antonious, G. F., <span class="me">Nepal, A.</span>, &amp; Neupane, B. (2025).
+      Remediation of Cd, Cu, and Zn metals in soil amended with biochar and animal manure
+      using a hyperaccumulator. <span class="jrnl">Pollutants, 5</span>(3), 22.
+      <a href="https://doi.org/10.3390/pollutants5030022">doi:10.3390/pollutants5030022</a>
+    </li>
+    <li>
+      Neupane, B., Antonious, G. F., Nzaramyimana, T., Acharya, S., Oli, D.,
+      <span class="me">Nepal, A.</span>, Dhakal, A., &amp; Makumbe, H. H. (2025).
+      Advancement in agriculture through radioisotopes: Current context, challenges and
+      future direction. <span class="jrnl">Journal of Agriculture and Food Research, 13</span>,
+      101966. <a href="https://doi.org/10.1016/j.jafr.2025.101966">doi:10.1016/j.jafr.2025.101966</a>
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, Antonious, G. F., Bebe, F. N., Webster, T. C.,
+      Gyawali, B. R., &amp; Neupane, B. (2024). Heavy metal accumulation in three varieties
+      of mustard grown under five soil management practices.
+      <span class="jrnl">Environments, 11</span>(4), 77.
+      <a href="https://doi.org/10.3390/environments11040077">doi:10.3390/environments11040077</a>
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, Antonious, G. F., Gyawali, B. R., Webster, T. C.,
+      &amp; Bebe, F. (2024). Assessing the bioaccumulation of heavy metals in cabbage grown
+      under five soil amendments. <span class="jrnl">Pollutants, 4</span>(1), 58–71.
+      <a href="https://doi.org/10.3390/pollutants4010005">doi:10.3390/pollutants4010005</a>
+    </li>
+    <li>
+      Antonious, G. F., Chiluwal, A. C., &amp; <span class="me">Nepal, A.</span> (2023).
+      Chitin, biochar, and animal manures impact on eggplant and green pepper yield and
+      quality. <span class="jrnl">Agricultural Sciences, 14</span>, 368–383.
+      <a href="https://doi.org/10.4236/as.2023.143024">doi:10.4236/as.2023.143024</a>
+    </li>
+    <li>
+      Duwal, A., <span class="me">Nepal, A.</span>, Luitel, S., Acharya, S., Pathak, R.,
+      Poudel, P. R., &amp; Shrestha, J. (2019). Evaluation of coriander
+      (<i>Coriandrum sativum</i> L.) varieties for growth and yield parameters.
+      <span class="jrnl">Nepalese Journal of Agricultural Sciences, 18</span>, 36–46.
+    </li>
+  </ol>
+
+
+  <!-- ============================================================
+       PRESENTATIONS
+       ============================================================ -->
+  <h2 id="presentations">Conference Presentations</h2>
+
+  <ol class="pubs">
+    <li>
+      <span class="me">Nepal, A.</span>, Negron, R., Nepal, J., Ono-Raphel, J., Brunharo, C.,
+      &amp; Di Gioia, F. (2026). Effects of carbon and nitrogen amendments on yield and
+      mineral profile of organic Tuscan kale grown in high tunnel following anaerobic soil
+      disinfestation. <span class="jrnl">ASHS Annual Meeting</span>, Dallas, TX. [Oral]
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, Negron, R., Nepal, J., Ono-Raphel, J., Brunharo, C.,
+      &amp; Di Gioia, F. (2026). Impact of anaerobic soil disinfestation on weed suppression
+      in an organic vegetable high tunnel system.
+      <span class="jrnl">ASHS Annual Meeting</span>, Dallas, TX. [Oral]
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, Antonious, G. F., &amp; Dawood, M. H. (2024).
+      Yield, quality, disease symptoms and heavy metal accumulation in potato grown under
+      five soil amendments. <span class="jrnl">ASA, CSSA, SSSA International Annual
+      Meeting</span>, San Antonio, TX. [Oral]
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, &amp; Antonious, G. F. (2024).
+      Bioaccumulation of heavy metals in mustard grown under five soil management practices.
+      <span class="jrnl">ARD 2024 Research Symposium</span>, Nashville, TN. [Oral]
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, Antonious, G. F., Gyawali, B., Webster, T.,
+      &amp; Bebe, F. (2023). Bioaccumulation of copper, molybdenum, and zinc in cabbage
+      grown under five soil amendments. <span class="jrnl">ASA, CSSA, SSSA International
+      Annual Meeting</span>, St. Louis, MO. [Oral]
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, &amp; Antonious, G. F. (2022).
+      Analysis of animal manures used for growing field-grown vegetables.
+      <span class="jrnl">20th Biennial 1890 Association of Research Directors
+      Symposium</span>, Atlanta, GA. [Poster]
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, &amp; Antonious, G. F. (2022).
+      Yield and quality of field crops grown in various soil amendments.
+      <span class="jrnl">ASA, CSSA, SSSA International Annual Meeting</span>,
+      Baltimore, MD. [Poster]
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, &amp; Antonious, G. F. (2022).
+      Yield and quality of tomato, <i>Solanum lycopersicum</i>, grown in various soil
+      amendments. <span class="jrnl">Kentucky Academy of Sciences Annual Meeting</span>,
+      Morehead State University, KY. [Oral]
+    </li>
+  </ol>
+
+
+  <!-- ============================================================
+       CV — keep the PDF at files/Anjan_Nepal_CV.pdf
+       ============================================================ -->
+  <h2 id="cv">CV</h2>
+  <div class="cv-row">
+    <a class="btn" href="files/Anjan_Nepal_CV.pdf">Download CV (PDF)</a>
+    <span class="stamp">Last updated October 2026</span>
+  </div>
+
+  <h3>Education</h3>
+  <ul class="plain">
+    <li><b>PhD, Agriculture and Environmental Plant Science</b> — Pennsylvania State
+      University, 2025–present<br>
+      <span class="stamp">Focus: anaerobic soil disinfestation, organic vegetable production,
+      weed management</span></li>
+    <li><b>MS, Environmental Studies</b> — Kentucky State University, 2023<br>
+      <span class="stamp">Thesis: Testing bioaccumulation of heavy metals in cabbage and
+      mustard grown under five soil amendments</span></li>
+    <li><b>BSc, Agriculture</b> — Tribhuvan University, Bhairahawa, Nepal, 2018<br>
+      <span class="stamp">Thesis: Evaluation of coriander
+      (<i>Coriandrum sativum</i> L.) varieties for growth and yield parameters</span></li>
+  </ul>
+
+  <h3>Experience</h3>
+  <ul class="plain">
+    <li><b>Graduate Research Assistant</b> — Pennsylvania State University, 2025–present.
+      Design and execute field research on anaerobic soil disinfestation and weed
+      suppression in high tunnel vegetable systems.</li>
+    <li><b>Research Associate</b> — Kentucky State University, 2023–2025.
+      Soil amendments, crop yield and quality, heavy metal bioaccumulation, and
+      quantification of glucosinolates in <i>Brassica</i> species.</li>
+    <li><b>Graduate Research Assistant</b> — Kentucky State University, 2021–2023.
+      Field and laboratory analysis: soil amendments, water sampling, pH, nutrient and
+      heavy metal analysis, ICP-OES operation.</li>
+  </ul>
+
+  <h3>Skills</h3>
+  <ul class="plain">
+    <li><b>Laboratory</b> — ICP-OES operation, heavy metal digestion, soil and water
+      sample analysis, glucosinolate quantification</li>
+    <li><b>Field</b> — experimental design, amendment incorporation, weed assessment,
+      high tunnel vegetable production</li>
+    <li><b>Analysis</b> — R, statistical analysis and data interpretation, ArcGIS Pro,
+      Python, literature review</li>
+  </ul>
+
+  <h3>Service</h3>
+  <ul class="plain">
+    <li>Pre-publication reviewer, <i>Advances in Weed Science</i> (Brazilian Weed Science
+      Society), 2025</li>
+    <li>Pre-publication reviewer, <i>Air, Soil and Water Research</i> (SAGE), 2025</li>
+    <li>Student member: Crop Science Society of America, Soil Science Society of America,
+      American Society of Agronomy, Kentucky Academy of Sciences, American Society for
+      Horticultural Science</li>
+  </ul>
+
+  <h3>Awards</h3>
+  <ul class="plain">
+    <li>Walter Thomas Memorial Scholarship, College of Agricultural Sciences,
+      Penn State, 2026/27</li>
+    <li>FOCCE (Forest Owner Carbon and Climate Education) Scholars Program, 2026</li>
+    <li>Golden Jubilee Scholarship, Embassy of India, for undergraduate study at
+      Tribhuvan University, 2014–2018</li>
+  </ul>
+
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <h2 id="contact">Contact</h2>
+  <p>
+    <a href="mailto:apn5663@psu.edu">apn5663@psu.edu</a><br>
+    Department of Plant Science<br>
+    The Pennsylvania State University<br>
+    University Park, PA 16802
+  </p>
+  <p>I'm glad to hear from growers, students, and researchers working on non-chemical
+     weed and soil-borne pest management.</p>
+
+  <footer>
+    Last updated October 2026.
+  </footer>
+
+</div>
+</body>
+</html>
