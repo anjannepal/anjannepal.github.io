@@ -32,18 +32,19 @@
     --font-head: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
 
     /* COLORS — light mode */
-    --bg:        #fcfcfd;   /* page background        */
-    --fg:        #1a1d21;   /* body text              */
-    --muted:     #666b73;   /* dates, captions        */
-    --rule:      #e3e5e9;   /* horizontal lines       */
-    --accent:    #041e42;   /* Penn State navy        */
-    --accent-lt: #eef1f6;   /* tag backgrounds        */
+    --bg:        #fcfcfd;   /* page background           */
+    --fg:        #1a1d21;   /* body text                 */
+    --muted:     #666b73;   /* dates, captions           */
+    --rule:      #e3e5e9;   /* horizontal lines          */
+    --accent:    #041e42;   /* Penn State navy           */
+    --accent-lt: #e9eef6;   /* pill + tag backgrounds    */
+    --accent-md: #d4ddeb;   /* pill hover background     */
     --link:      #1a4480;
     --link-hover:#041e42;
-    --thumb-bg:  #edeff3;   /* placeholder boxes      */
-    --btn-fg:    #ffffff;   /* text on the CV button  */
+    --thumb-bg:  #edeff3;   /* placeholder boxes         */
+    --btn-fg:    #ffffff;   /* text on navy backgrounds  */
 
-    --maxw:      800px;     /* content width          */
+    --maxw:      800px;     /* content width             */
   }
 
   @media (prefers-color-scheme: dark) {
@@ -53,7 +54,8 @@
       --muted:     #969ba3;
       --rule:      #2a2d33;
       --accent:    #9dc1ef;
-      --accent-lt: #1b2330;
+      --accent-lt: #1c2431;
+      --accent-md: #263143;
       --link:      #9dc1ef;
       --link-hover:#c3dbf8;
       --thumb-bg:  #202329;
@@ -65,6 +67,11 @@
      Layout and type — safe to ignore
      ============================================================ */
   * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
 
   body {
     margin: 0;
@@ -80,7 +87,7 @@
   a { color: var(--link); text-decoration: none; }
   a:hover { color: var(--link-hover); text-decoration: underline; }
 
-  /* ---------- Sticky nav ---------- */
+  /* ---------- Sticky nav: pill buttons ---------- */
   nav {
     position: sticky; top: 0; z-index: 10;
     background: var(--bg);
@@ -89,20 +96,22 @@
   }
   nav .inner {
     max-width: var(--maxw); margin: 0 auto;
-    display: flex; flex-wrap: wrap; gap: 4px 22px;
-    align-items: center; min-height: 54px;
+    display: flex; flex-wrap: wrap; gap: 8px;
+    align-items: center; padding: 11px 0;
   }
-  nav .brand {
+  nav a.nl {
     font-family: var(--font-head);
-    font-weight: 600; font-size: 17.5px;
-    letter-spacing: -0.01em;
-    margin-right: auto; color: var(--fg);
+    font-size: 15px; font-weight: 500;
+    padding: 6px 15px; border-radius: 999px;
+    background: var(--accent-lt); color: var(--accent);
+    transition: background-color .15s ease, color .15s ease;
+    white-space: nowrap;
   }
-  nav .brand:hover { text-decoration: none; }
-  nav a.nl { font-size: 15.5px; color: var(--muted); font-weight: 400; }
-  nav a.nl:hover { color: var(--accent); text-decoration: none; }
+  nav a.nl:hover { background: var(--accent-md); color: var(--accent); text-decoration: none; }
+  nav a.nl.active { background: var(--accent); color: var(--btn-fg); }
+  nav a.nl:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 52px 20px 72px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 48px 20px 72px; }
 
   /* ---------- Header ---------- */
   .header { display: flex; gap: 34px; align-items: flex-start; margin-bottom: 8px; }
@@ -121,9 +130,25 @@
   .subtitle { color: var(--muted); font-size: 17px; margin: 0 0 18px; font-weight: 400; }
   .header p { margin: 0 0 14px; }
 
-  .links { margin-top: 18px; font-size: 16px; }
-  .links a { white-space: nowrap; }
-  .links .sep { color: var(--muted); margin: 0 7px; }
+  /* ---------- Icon link buttons ---------- */
+  .links {
+    margin-top: 22px;
+    display: flex; flex-wrap: wrap; gap: 9px;
+  }
+  .links a.lk {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 14px; border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: transparent; color: var(--fg);
+    font-size: 15px; font-weight: 500;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .links a.lk:hover {
+    background: var(--accent-lt); border-color: var(--accent);
+    color: var(--accent); text-decoration: none;
+  }
+  .links a.lk:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .links a.lk svg { width: 17px; height: 17px; flex: none; }
 
   /* ---------- Sections ---------- */
   h2 {
@@ -132,7 +157,7 @@
     letter-spacing: -0.02em;
     margin: 54px 0 20px; padding-bottom: 9px;
     border-bottom: 1px solid var(--rule);
-    scroll-margin-top: 70px;
+    scroll-margin-top: 76px;
   }
 
   h3 {
@@ -194,10 +219,12 @@
   /* ---------- CV button ---------- */
   .cv-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
   .btn {
-    display: inline-block; padding: 10px 20px; border-radius: 4px;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: 4px;
     background: var(--accent); color: var(--btn-fg);
     font-size: 16px; font-weight: 500;
   }
+  .btn svg { width: 17px; height: 17px; flex: none; }
   .btn:hover { text-decoration: none; background: var(--link-hover); color: var(--btn-fg); }
 
   .stamp { color: var(--muted); font-size: 15px; }
@@ -211,10 +238,15 @@
   /* ---------- Mobile ---------- */
   @media (max-width: 700px) {
     body { font-size: 16px; }
-    nav .inner { min-height: 48px; padding: 8px 0; gap: 2px 16px; }
-    nav .brand { font-size: 17px; width: 100%; margin-right: 0; }
-    nav a.nl { font-size: 15px; }
-    .wrap { padding: 32px 20px 48px; }
+    /* nav becomes one swipeable row instead of wrapping */
+    nav { padding: 0; }
+    nav .inner {
+      flex-wrap: nowrap; overflow-x: auto; padding: 10px 20px;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    nav .inner::-webkit-scrollbar { display: none; }
+    nav a.nl { font-size: 14.5px; padding: 6px 13px; }
+    .wrap { padding: 30px 20px 48px; }
     h1 { font-size: 30px; }
     h2 { font-size: 22px; margin-top: 42px; }
     .header { flex-direction: column-reverse; gap: 20px; }
@@ -229,9 +261,13 @@
 
 <body>
 
+<!-- ============================================================
+     NAVIGATION
+     Each pill fills solid navy when you reach that section.
+     ============================================================ -->
 <nav>
   <div class="inner">
-    <a class="brand" href="#top">Anjan Nepal</a>
+    <a class="nl" href="#top">Home</a>
     <a class="nl" href="#research">Research</a>
     <a class="nl" href="#publications">Publications</a>
     <a class="nl" href="#presentations">Presentations</a>
@@ -263,8 +299,74 @@
         on a USDA-funded project.
       </p>
 
+      <!-- ============================================================
+           LINK BUTTONS
+
+           TO USE AN OFFICIAL LOGO INSTEAD OF AN ICON:
+           download the brand's logo file, put it in the images folder,
+           and replace that link's whole <svg>...</svg> block with:
+
+             <img src="images/orcid-logo.png" alt="" style="width:17px;height:17px">
+
+           Official downloads:
+             ORCID     orcid.org/trademark-and-id-display-guidelines
+             LinkedIn  brand.linkedin.com/downloads
+             Scholar   no official logo is published for linking
+
+           FOR A LINK WITH NO LOGO, use the plain arrow instead:
+
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+               <path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+           ============================================================ -->
       <div class="links">
-        <a href="mailto:apn5663@psu.edu">Email</a><span class="sep">/</span><a href="https://orcid.org/0009-0008-1554-0647">ORCID</a><span class="sep">/</span><a href="https://scholar.google.com/citations?user=REPLACE_ME">Scholar</a><span class="sep">/</span><a href="https://www.linkedin.com/in/REPLACE_ME/">LinkedIn</a><span class="sep">/</span><a href="files/Anjan_Nepal_CV.pdf">CV</a>
+
+        <!-- Email -->
+        <a class="lk" href="mailto:apn5663@psu.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+          </svg>
+          <span>Email</span>
+        </a>
+
+        <!-- ORCID -->
+        <a class="lk" href="https://orcid.org/0009-0008-1554-0647">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="2"/>
+            <circle cx="8.6" cy="10.8" r="2.1"/>
+            <path d="M5.2 16.4c.8-1.5 2-2.3 3.4-2.3s2.6.8 3.4 2.3"/>
+            <path d="M15 10h4M15 13.6h4"/>
+          </svg>
+          <span>ORCID</span>
+        </a>
+
+        <!-- Google Scholar -->
+        <a class="lk" href="https://scholar.google.com/citations?user=REPLACE_ME">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 9L12 4.5 21.5 9 12 13.5 2.5 9z"/>
+            <path d="M6 11.2v4.3c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.3"/>
+          </svg>
+          <span>Scholar</span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a class="lk" href="https://www.linkedin.com/in/REPLACE_ME/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="6" cy="7" r="2.3"/><circle cx="18" cy="7" r="2.3"/><circle cx="12" cy="17" r="2.3"/>
+            <path d="M7.7 8.7l3 6M16.3 8.7l-3 6M8.3 7h7.4"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+
+        <!-- CV -->
+        <a class="lk" href="files/Anjan_Nepal_CV.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 3v5h5"/><path d="M12 11.5v5"/><path d="M9.8 14.3L12 16.5l2.2-2.2"/>
+          </svg>
+          <span>CV</span>
+        </a>
+
       </div>
     </div>
 
@@ -464,7 +566,12 @@
 
   <h2 id="cv">CV</h2>
   <div class="cv-row">
-    <a class="btn" href="files/Anjan_Nepal_CV.pdf">Download CV (PDF)</a>
+    <a class="btn" href="files/Anjan_Nepal_CV.pdf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3v12"/><path d="M7.5 11.5L12 16l4.5-4.5"/><path d="M4 19h16"/>
+      </svg>
+      Download CV (PDF)
+    </a>
     <span class="stamp">Last updated October 2026</span>
   </div>
 
@@ -540,5 +647,41 @@
   </footer>
 
 </div>
+
+<script>
+/* Highlights the nav pill for whichever section you're looking at. */
+(function () {
+  var ids = ['top', 'research', 'publications', 'presentations', 'cv', 'contact'];
+  var links = {}, sections = [];
+
+  ids.forEach(function (id) {
+    var a = document.querySelector('nav a[href="#' + id + '"]');
+    var s = document.getElementById(id);
+    if (a) links[id] = a;
+    if (s) sections.push(s);
+  });
+
+  function update() {
+    var y = window.pageYOffset + 110;
+    var current = 'top';
+    sections.forEach(function (s) {
+      if (s.offsetTop <= y) current = s.id;
+    });
+    if (window.pageYOffset < 60) current = 'top';
+
+    ids.forEach(function (id) {
+      if (links[id]) {
+        if (id === current) links[id].classList.add('active');
+        else links[id].classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+
 </body>
 </html>
