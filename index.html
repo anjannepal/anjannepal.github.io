@@ -11,46 +11,67 @@
 <meta property="og:image" content="images/profile.jpg">
 <meta property="og:type" content="website">
 
+<!-- ============================================================
+     FONT LOADING
+     To use a different font, change the family name in the URL
+     below, then change --font-body / --font-head in the CSS.
+     Browse options at fonts.google.com
+     ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+  /* ============================================================
+     EDIT FONTS AND COLORS HERE — nothing below this block needs
+     touching. Change a value once and it applies site-wide.
+     ============================================================ */
   :root {
-    --bg:        #fdfdfb;
-    --fg:        #22241f;
-    --muted:     #6c6f66;
-    --rule:      #e2e3dc;
-    --accent:    #2f5d3f;
-    --accent-lt: #f0f4ee;
-    --link:      #2f5d3f;
-    --link-hover:#1d3b27;
-    --thumb-bg:  #eceee7;
-    --maxw:      800px;
+    /* FONTS — change these two lines to restyle the whole page */
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-head: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+    /* COLORS — light mode */
+    --bg:        #fcfcfd;   /* page background        */
+    --fg:        #1a1d21;   /* body text              */
+    --muted:     #666b73;   /* dates, captions        */
+    --rule:      #e3e5e9;   /* horizontal lines       */
+    --accent:    #041e42;   /* Penn State navy        */
+    --accent-lt: #eef1f6;   /* tag backgrounds        */
+    --link:      #1a4480;
+    --link-hover:#041e42;
+    --thumb-bg:  #edeff3;   /* placeholder boxes      */
+    --btn-fg:    #ffffff;   /* text on the CV button  */
+
+    --maxw:      800px;     /* content width          */
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg:        #161815;
-      --fg:        #e6e7e1;
-      --muted:     #9b9e94;
-      --rule:      #2d302a;
-      --accent:    #8fc1a0;
-      --accent-lt: #1d231e;
-      --link:      #8fc1a0;
-      --link-hover:#b4d9c0;
-      --thumb-bg:  #22251f;
+      --bg:        #15171a;
+      --fg:        #e7e9ec;
+      --muted:     #969ba3;
+      --rule:      #2a2d33;
+      --accent:    #9dc1ef;
+      --accent-lt: #1b2330;
+      --link:      #9dc1ef;
+      --link-hover:#c3dbf8;
+      --thumb-bg:  #202329;
+      --btn-fg:    #15171a;
     }
   }
 
+  /* ============================================================
+     Layout and type — safe to ignore
+     ============================================================ */
   * { box-sizing: border-box; }
 
   body {
     margin: 0;
     background: var(--bg);
     color: var(--fg);
-    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-weight: 300;
+    font-family: var(--font-body);
+    font-weight: 400;
     font-size: 17px;
     line-height: 1.62;
     -webkit-font-smoothing: antialiased;
@@ -72,12 +93,13 @@
     align-items: center; min-height: 54px;
   }
   nav .brand {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 600; font-size: 18px;
+    font-family: var(--font-head);
+    font-weight: 600; font-size: 17.5px;
+    letter-spacing: -0.01em;
     margin-right: auto; color: var(--fg);
   }
   nav .brand:hover { text-decoration: none; }
-  nav a.nl { font-size: 15.5px; color: var(--muted); }
+  nav a.nl { font-size: 15.5px; color: var(--muted); font-weight: 400; }
   nav a.nl:hover { color: var(--accent); text-decoration: none; }
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 52px 20px 72px; }
@@ -92,11 +114,11 @@
   }
 
   h1 {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 600; font-size: 38px; line-height: 1.15;
-    margin: 0 0 6px; letter-spacing: -0.3px;
+    font-family: var(--font-head);
+    font-weight: 600; font-size: 38px; line-height: 1.12;
+    margin: 0 0 6px; letter-spacing: -0.025em;
   }
-  .subtitle { color: var(--muted); font-size: 17px; margin: 0 0 18px; }
+  .subtitle { color: var(--muted); font-size: 17px; margin: 0 0 18px; font-weight: 400; }
   .header p { margin: 0 0 14px; }
 
   .links { margin-top: 18px; font-size: 16px; }
@@ -105,15 +127,17 @@
 
   /* ---------- Sections ---------- */
   h2 {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 600; font-size: 27px;
+    font-family: var(--font-head);
+    font-weight: 600; font-size: 26px;
+    letter-spacing: -0.02em;
     margin: 54px 0 20px; padding-bottom: 9px;
     border-bottom: 1px solid var(--rule);
     scroll-margin-top: 70px;
   }
 
   h3 {
-    font-weight: 600; font-size: 14px;
+    font-family: var(--font-head);
+    font-weight: 600; font-size: 13px;
     letter-spacing: 0.09em; text-transform: uppercase;
     color: var(--muted); margin: 32px 0 14px;
   }
@@ -134,11 +158,12 @@
   }
   .entry .meta { flex: 1 1 auto; min-width: 0; }
   .entry .etitle {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-weight: 600; font-size: 19px; line-height: 1.3;
+    font-family: var(--font-head);
+    font-weight: 600; font-size: 18.5px; line-height: 1.3;
+    letter-spacing: -0.015em;
     display: block; margin-bottom: 4px;
   }
-  .entry .where { font-style: italic; color: var(--muted); font-size: 15.5px; margin-bottom: 6px; }
+  .entry .where { color: var(--muted); font-size: 15.5px; margin-bottom: 6px; }
 
   .tag {
     display: inline-block; font-size: 11.5px; font-weight: 600;
@@ -166,21 +191,14 @@
   ul.plain { padding-left: 21px; margin: 0 0 16px; }
   ul.plain li { margin-bottom: 7px; }
 
-  ul.tight { padding-left: 21px; margin: 0 0 10px; }
-  ul.tight li { margin-bottom: 3px; }
-
   /* ---------- CV button ---------- */
   .cv-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
   .btn {
     display: inline-block; padding: 10px 20px; border-radius: 4px;
-    background: var(--accent); color: #fff;
-    font-size: 16px; font-weight: 400;
+    background: var(--accent); color: var(--btn-fg);
+    font-size: 16px; font-weight: 500;
   }
-  .btn:hover { text-decoration: none; background: var(--link-hover); color: #fff; }
-  @media (prefers-color-scheme: dark) {
-    .btn { color: #161815; }
-    .btn:hover { color: #161815; }
-  }
+  .btn:hover { text-decoration: none; background: var(--link-hover); color: var(--btn-fg); }
 
   .stamp { color: var(--muted); font-size: 15px; }
 
@@ -198,7 +216,7 @@
     nav a.nl { font-size: 15px; }
     .wrap { padding: 32px 20px 48px; }
     h1 { font-size: 30px; }
-    h2 { font-size: 23px; margin-top: 42px; }
+    h2 { font-size: 22px; margin-top: 42px; }
     .header { flex-direction: column-reverse; gap: 20px; }
     .header .photo { flex: none; }
     .header .photo img { width: 148px; height: 148px; }
@@ -224,10 +242,6 @@
 
 <div class="wrap" id="top">
 
-  <!-- ============================================================
-       HEADER
-       Put a square photo (at least 400x400) at images/profile.jpg
-       ============================================================ -->
   <div class="header">
     <div class="text">
       <h1>Anjan Nepal</h1>
@@ -262,9 +276,14 @@
 
   <!-- ============================================================
        RESEARCH
-       Field photos work better than diagrams here. Good candidates:
-       a high tunnel with ASD tarps laid, a weed quadrat count,
-       a kale trial plot, the ICP-OES bench.
+
+       TO ADD A PHOTO: replace the whole <div class="placeholder">...
+       </div> line with an image tag, like this:
+
+       <img src="images/asd-tunnel.jpg" alt="Tarped high tunnel beds">
+
+       Then upload that photo into the images folder under exactly
+       that filename.
        ============================================================ -->
   <h2 id="research">Research</h2>
 
@@ -337,9 +356,6 @@
   </div>
 
 
-  <!-- ============================================================
-       PUBLICATIONS — newest first. Your name is bolded throughout.
-       ============================================================ -->
   <h2 id="publications">Publications</h2>
   <p style="margin-top:-8px; color:var(--muted); font-size:15.5px;">
     Full list on <a href="https://orcid.org/0009-0008-1554-0647">ORCID</a>.
@@ -393,9 +409,6 @@
   </ol>
 
 
-  <!-- ============================================================
-       PRESENTATIONS
-       ============================================================ -->
   <h2 id="presentations">Conference Presentations</h2>
 
   <ol class="pubs">
@@ -449,9 +462,6 @@
   </ol>
 
 
-  <!-- ============================================================
-       CV — keep the PDF at files/Anjan_Nepal_CV.pdf
-       ============================================================ -->
   <h2 id="cv">CV</h2>
   <div class="cv-row">
     <a class="btn" href="files/Anjan_Nepal_CV.pdf">Download CV (PDF)</a>
@@ -515,9 +525,6 @@
   </ul>
 
 
-  <!-- ============================================================
-       CONTACT
-       ============================================================ -->
   <h2 id="contact">Contact</h2>
   <p>
     <a href="mailto:apn5663@psu.edu">apn5663@psu.edu</a><br>
