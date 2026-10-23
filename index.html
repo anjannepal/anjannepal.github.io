@@ -150,22 +150,29 @@
   .hero p { margin: 0 0 14px; }
   .hero p:first-child { margin-top: 0; }
 
-  /* ---------- Icon link buttons ---------- */
-  .links { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 9px; }
+  /* ---------- Logo link buttons ----------
+     Each logo sits on a white tile. The white is deliberate: the logo
+     files have white backgrounds, and the tile keeps them looking right
+     in dark mode too. Tiles are a fixed height with automatic width, so
+     the wide ORCID wordmark gets a wider tile than the square marks. */
+  .links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .links a.lk {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 7px 14px; border-radius: 999px;
-    border: 1px solid var(--rule);
-    background: transparent; color: var(--fg);
-    font-size: 15px; font-weight: 500;
-    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 52px; padding: 0 15px;
+    background: #ffffff;
+    border: 1px solid var(--rule); border-radius: 8px;
+    transition: border-color .15s ease, box-shadow .15s ease;
   }
   .links a.lk:hover {
-    background: var(--accent-lt); border-color: var(--accent);
-    color: var(--accent); text-decoration: none;
+    border-color: var(--accent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .10);
+    text-decoration: none;
   }
-  .links a.lk:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .links a.lk svg { width: 17px; height: 17px; flex: none; }
+  .links a.lk:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .links a.lk img { height: 30px; width: auto; display: block; }
+  @media (prefers-color-scheme: dark) {
+    .links a.lk { border-color: #3a3f47; }
+  }
 
   /* ---------- Headings ---------- */
   h2 {
@@ -377,59 +384,33 @@
       </p>
 
       <!-- ============================================================
-           LINK BUTTONS
+           LOGO LINKS
 
-           TO USE AN OFFICIAL LOGO INSTEAD OF AN ICON:
-           download the brand's logo file, put it in the images folder,
-           and replace that link's whole <svg>...</svg> block with:
-
-             <img src="images/orcid-logo.png" alt="" style="width:17px;height:17px">
-
-           Official downloads:
-             ORCID     orcid.org/trademark-and-id-display-guidelines
-             LinkedIn  brand.linkedin.com/downloads
-             Scholar   no official logo is published for linking
-
-           FOR A LINK WITH NO LOGO, use the plain arrow instead:
-
-             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-               <path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+           Each logo is a clickable tile that opens in a new tab.
+           To swap a logo: put the new file in the images folder and
+           change the src. Keep the file roughly 66 pixels tall.
+           To remove one, delete its whole <a class="lk"> ... </a> block.
            ============================================================ -->
       <div class="links">
 
-        <a class="lk" href="https://orcid.org/0009-0008-1554-0647">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2.5" y="4.5" width="19" height="15" rx="2"/>
-            <circle cx="8.6" cy="10.8" r="2.1"/>
-            <path d="M5.2 16.4c.8-1.5 2-2.3 3.4-2.3s2.6.8 3.4 2.3"/>
-            <path d="M15 10h4M15 13.6h4"/>
-          </svg>
-          <span>ORCID</span>
+        <a class="lk" href="https://orcid.org/0009-0008-1554-0647"
+           target="_blank" rel="noopener noreferrer" title="ORCID">
+          <img src="images/logo-orcid.png" alt="ORCID">
         </a>
 
-        <a class="lk" href="https://scholar.google.com/citations?user=t64nxw8AAAAJ&amp;hl=en">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M2.5 9L12 4.5 21.5 9 12 13.5 2.5 9z"/>
-            <path d="M6 11.2v4.3c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.3"/>
-          </svg>
-          <span>Scholar</span>
+        <a class="lk" href="https://scholar.google.com/citations?user=t64nxw8AAAAJ&amp;hl=en"
+           target="_blank" rel="noopener noreferrer" title="Google Scholar">
+          <img src="images/logo-scholar.png" alt="Google Scholar">
         </a>
 
-        <a class="lk" href="https://www.linkedin.com/in/anzannepal/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="6" cy="7" r="2.3"/><circle cx="18" cy="7" r="2.3"/><circle cx="12" cy="17" r="2.3"/>
-            <path d="M7.7 8.7l3 6M16.3 8.7l-3 6M8.3 7h7.4"/>
-          </svg>
-          <span>LinkedIn</span>
+        <a class="lk" href="https://www.linkedin.com/in/anzannepal/"
+           target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <img src="images/logo-linkedin.png" alt="LinkedIn">
         </a>
 
-        <a class="lk" href="files/Anjan_Nepal_CV.pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
-            <path d="M14 3v5h5"/><path d="M12 11.5v5"/><path d="M9.8 14.3L12 16.5l2.2-2.2"/>
-          </svg>
-          <span>CV</span>
+        <a class="lk" href="files/Anjan_Nepal_CV.pdf"
+           target="_blank" rel="noopener noreferrer" title="Download CV (PDF)">
+          <img src="images/logo-cv.png" alt="Curriculum vitae">
         </a>
 
       </div>
