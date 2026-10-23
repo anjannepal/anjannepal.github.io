@@ -191,7 +191,11 @@
   .item { display: flex; gap: 26px; align-items: flex-start; margin-bottom: 36px; }
   .item .body { flex: 1 1 auto; min-width: 0; }
   .item .body p { margin: 0; }
-  .item .side { flex: 0 0 230px; }
+  .item .side { flex: 0 0 250px; }
+  /* photos stacked in the right-hand column: spacing, and one shared shape
+     so a portrait and a landscape shot don't look mismatched */
+  .item .side figure + figure { margin-top: 18px; }
+  .item .side figure img { aspect-ratio: 4 / 3; object-fit: cover; }
 
   /* ---------- Photo placeholders and real photos ---------- */
   figure { margin: 0; }
@@ -455,16 +459,16 @@
         how combinations of carbon and nitrogen amendments impact weed seedbank, weed
         emergence and composition across a high-tunnel organic vegetable rotation.
       </p>
-      <div class="figrow two">
-        <figure>
-          <img src="images/asd-application.jpg" alt="Pouring molasses onto a bed spread with wheat middlings" loading="lazy">
-          <figcaption>Applying molasses over wheat middlings as the carbon source.</figcaption>
-        </figure>
-        <figure>
-          <img src="images/asd-tunnel.jpg" alt="Tarped beds and sensors inside a high tunnel" loading="lazy">
-          <figcaption>Tarped beds and ORP sensors in the high tunnel ASD trial.</figcaption>
-        </figure>
-      </div>
+    </div>
+    <div class="side">
+      <figure>
+        <img src="images/asd-application.jpg" alt="Pouring molasses onto a bed spread with wheat middlings" loading="lazy">
+        <figcaption>Applying molasses over wheat middlings as the carbon source.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/asd-tunnel.jpg" alt="Tarped beds and sensors inside a high tunnel" loading="lazy">
+        <figcaption>Tarped beds and ORP sensors in the high tunnel ASD trial.</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -477,16 +481,16 @@
         Tuscan kale grown after ASD, so I can evaluate amendment choices based on both
         pest pressure and nutritional quality rather than one in isolation.
       </p>
-      <div class="figrow two">
-        <figure>
-          <img src="images/kale-trial.jpg" alt="Rows of Tuscan kale being harvested in a high tunnel" loading="lazy">
-          <figcaption>Harvesting organic Tuscan kale grown after ASD.</figcaption>
-        </figure>
-        <figure>
-          <img src="images/kale-sampling.jpg" alt="Taking a quadrat sample among the kale rows" loading="lazy">
-          <figcaption>Quadrat sampling for weed assessment in the kale crop.</figcaption>
-        </figure>
-      </div>
+    </div>
+    <div class="side">
+      <figure>
+        <img src="images/kale-trial.jpg" alt="Rows of Tuscan kale being harvested in a high tunnel" loading="lazy">
+        <figcaption>Harvesting organic Tuscan kale grown after ASD.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/kale-sampling.jpg" alt="Taking a quadrat sample among the kale rows" loading="lazy">
+        <figcaption>Quadrat sampling for weed assessment in the kale crop.</figcaption>
+      </figure>
     </div>
   </div>
 
