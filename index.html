@@ -44,7 +44,7 @@
     --thumb-bg:  #edeff3;   /* placeholder boxes         */
     --btn-fg:    #ffffff;   /* text on navy backgrounds  */
 
-    --maxw:      860px;     /* content width             */
+    --maxw:      880px;     /* content width             */
   }
 
   @media (prefers-color-scheme: dark) {
@@ -179,7 +179,7 @@
     font-family: var(--font-head);
     font-weight: 600; font-size: 13px;
     letter-spacing: 0.09em; text-transform: uppercase;
-    color: var(--muted); margin: 42px 0 16px;
+    color: var(--muted); margin: 44px 0 16px;
   }
   h4 {
     font-family: var(--font-head);
@@ -187,8 +187,8 @@
     letter-spacing: -0.015em; margin: 0 0 7px;
   }
 
-  /* ---------- Item: text with an optional photo beside it ---------- */
-  .item { display: flex; gap: 26px; align-items: flex-start; margin-bottom: 36px; }
+  /* ---------- Item: writing on the left, photos on the right ---------- */
+  .item { display: flex; gap: 26px; align-items: flex-start; margin-bottom: 38px; }
   .item .body { flex: 1 1 auto; min-width: 0; }
   .item .body p { margin: 0; }
   .item .side { flex: 0 0 250px; }
@@ -197,7 +197,7 @@
   .item .side figure + figure { margin-top: 18px; }
   .item .side figure img { aspect-ratio: 4 / 3; object-fit: cover; }
 
-  /* ---------- Photo placeholders and real photos ---------- */
+  /* ---------- Photos ---------- */
   figure { margin: 0; }
   figure img {
     width: 100%; height: auto; display: block;
@@ -213,10 +213,11 @@
   }
   figcaption { color: var(--muted); font-size: 13.5px; margin-top: 7px; line-height: 1.45; }
 
-  /* two or three photos side by side */
+  /* grid of photos, used on the Gallery page */
   .figrow { display: grid; gap: 16px; margin: 18px 0 0; }
   .figrow.two   { grid-template-columns: repeat(2, 1fr); }
   .figrow.three { grid-template-columns: repeat(3, 1fr); }
+  .figrow figure img { aspect-ratio: 4 / 3; object-fit: cover; }
 
   /* ---------- Lists ---------- */
   ul.plain { padding-left: 21px; margin: 0 0 18px; }
@@ -281,9 +282,14 @@
     .hero .photo img { width: 170px; height: 204px; }
     .hero .text { order: 2; }
 
+    /* side column drops below the text */
     .item { flex-direction: column; gap: 14px; }
     .item .side { flex: none; width: 100%; }
 
+    .figrow.two, .figrow.three { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 460px) {
     .figrow.two, .figrow.three { grid-template-columns: 1fr; }
   }
 </style>
@@ -300,7 +306,7 @@
 
      with
 
-         <img src="images/whatever.jpg" alt="what it shows">
+         <img src="images/whatever.jpg" alt="what it shows" loading="lazy">
 
      then upload that photo into the images folder using exactly
      that filename (lowercase, and the .jpg must match).
@@ -312,10 +318,10 @@
 <nav>
   <div class="inner">
     <a class="nl" href="#home">Home</a>
-    <a class="nl" href="#research">Research</a>
-    <a class="nl" href="#extension">Extension</a>
-    <a class="nl" href="#awards">Awards</a>
-    <a class="nl" href="#hobbies">Hobbies</a>
+    <a class="nl" href="#research">Research and Extension</a>
+    <a class="nl" href="#education">Education</a>
+    <a class="nl" href="#publication">Publication</a>
+    <a class="nl" href="#gallery">Gallery</a>
   </div>
 </nav>
 
@@ -430,6 +436,19 @@
     </div>
   </div>
 
+  <h3>Professional Experience</h3>
+  <ul class="plain">
+    <li><b>Graduate Research Assistant</b> — Pennsylvania State University, 2025–present.
+      Design and execute field research on anaerobic soil disinfestation and weed
+      suppression in high tunnel vegetable systems.</li>
+    <li><b>Research Associate</b> — Kentucky State University, 2023–2025.
+      Soil amendments, crop yield and quality, heavy metal bioaccumulation, and
+      quantification of glucosinolates in <i>Brassica</i> species.</li>
+    <li><b>Graduate Research Assistant</b> — Kentucky State University, 2021–2023.
+      Field and laboratory analysis: soil amendments, water sampling, pH, nutrient and
+      heavy metal analysis, ICP-OES operation.</li>
+  </ul>
+
   <!-- Email written as plain text, not a clickable mail link -->
   <div class="contact">
     Email: apn5663@psu.edu<br>
@@ -441,10 +460,12 @@
 
 
 <!-- ============================================================
-     RESEARCH
+     RESEARCH AND EXTENSION
+     Every entry here follows one pattern: writing on the left,
+     photos stacked in the column on the right.
      ============================================================ -->
 <section class="page" id="research">
-  <h2>Research</h2>
+  <h2>Research and Extension</h2>
 
   <h3 style="margin-top:0">Research Projects — Current</h3>
 
@@ -515,81 +536,7 @@
     </div>
   </div>
 
-  <h3>Professional Experience</h3>
-  <ul class="plain">
-    <li><b>Graduate Research Assistant</b> — Pennsylvania State University, 2025–present.
-      Design and execute field research on anaerobic soil disinfestation and weed
-      suppression in high tunnel vegetable systems.</li>
-    <li><b>Research Associate</b> — Kentucky State University, 2023–2025.
-      Soil amendments, crop yield and quality, heavy metal bioaccumulation, and
-      quantification of glucosinolates in <i>Brassica</i> species.</li>
-    <li><b>Graduate Research Assistant</b> — Kentucky State University, 2021–2023.
-      Field and laboratory analysis: soil amendments, water sampling, pH, nutrient and
-      heavy metal analysis, ICP-OES operation.</li>
-  </ul>
-
-  <h3>Peer-Reviewed Publications</h3>
-  <p class="stamp" style="margin-top:-6px">
-    Full list on <a href="https://orcid.org/0009-0008-1554-0647">ORCID</a>.
-  </p>
-
-  <ol class="pubs">
-    <li>
-      Neupane, B., Antonious, G. F., Dawood, M. H., &amp; <span class="me">Nepal, A.</span> (2025).
-      Bioaccumulation of heavy metals in hot pepper grown in biochar and animal
-      manure-amended soil. <span class="jrnl">Environmental Pollution and Management</span>.
-      <a href="https://doi.org/10.1016/j.epm.2025.09.006">doi:10.1016/j.epm.2025.09.006</a>
-    </li>
-    <li>
-      Antonious, G. F., <span class="me">Nepal, A.</span>, &amp; Neupane, B. (2025).
-      Remediation of Cd, Cu, and Zn metals in soil amended with biochar and animal manure
-      using a hyperaccumulator. <span class="jrnl">Pollutants, 5</span>(3), 22.
-      <a href="https://doi.org/10.3390/pollutants5030022">doi:10.3390/pollutants5030022</a>
-    </li>
-    <li>
-      Neupane, B., Antonious, G. F., Nzaramyimana, T., Acharya, S., Oli, D.,
-      <span class="me">Nepal, A.</span>, Dhakal, A., &amp; Makumbe, H. H. (2025).
-      Advancement in agriculture through radioisotopes: Current context, challenges and
-      future direction. <span class="jrnl">Journal of Agriculture and Food Research, 13</span>,
-      101966. <a href="https://doi.org/10.1016/j.jafr.2025.101966">doi:10.1016/j.jafr.2025.101966</a>
-    </li>
-    <li>
-      <span class="me">Nepal, A.</span>, Antonious, G. F., Bebe, F. N., Webster, T. C.,
-      Gyawali, B. R., &amp; Neupane, B. (2024). Heavy metal accumulation in three varieties
-      of mustard grown under five soil management practices.
-      <span class="jrnl">Environments, 11</span>(4), 77.
-      <a href="https://doi.org/10.3390/environments11040077">doi:10.3390/environments11040077</a>
-    </li>
-    <li>
-      <span class="me">Nepal, A.</span>, Antonious, G. F., Gyawali, B. R., Webster, T. C.,
-      &amp; Bebe, F. (2024). Assessing the bioaccumulation of heavy metals in cabbage grown
-      under five soil amendments. <span class="jrnl">Pollutants, 4</span>(1), 58–71.
-      <a href="https://doi.org/10.3390/pollutants4010005">doi:10.3390/pollutants4010005</a>
-    </li>
-    <li>
-      Antonious, G. F., Chiluwal, A. C., &amp; <span class="me">Nepal, A.</span> (2023).
-      Chitin, biochar, and animal manures impact on eggplant and green pepper yield and
-      quality. <span class="jrnl">Agricultural Sciences, 14</span>, 368–383.
-      <a href="https://doi.org/10.4236/as.2023.143024">doi:10.4236/as.2023.143024</a>
-    </li>
-    <li>
-      Duwal, A., <span class="me">Nepal, A.</span>, Luitel, S., Acharya, S., Pathak, R.,
-      Poudel, P. R., &amp; Shrestha, J. (2019). Evaluation of coriander
-      (<i>Coriandrum sativum</i> L.) varieties for growth and yield parameters.
-      <span class="jrnl">Nepalese Journal of Agricultural Sciences, 18</span>, 36–46.
-    </li>
-  </ol>
-
-</section>
-
-
-<!-- ============================================================
-     EXTENSION
-     ============================================================ -->
-<section class="page" id="extension">
-  <h2>Extension</h2>
-
-  <h3 style="margin-top:0">Extension Training and Activities</h3>
+  <h3>Extension Training and Activities</h3>
 
   <div class="item">
     <div class="body">
@@ -620,16 +567,16 @@
         ASD applications are done, the objectives behind the experiment, and the benefits
         farmers get from such soil treatment.
       </p>
-      <div class="figrow two">
-        <figure>
-          <img src="images/agprogress-2025.jpg" alt="Explaining the high tunnel ASD experiment to visitors" loading="lazy">
-          <figcaption>Explaining the ASD experiment to visitors, Ag Progress Days 2025.</figcaption>
-        </figure>
-        <figure>
-          <img src="images/agprogress-2026.jpg" alt="Visitors gathered around the high tunnel trial" loading="lazy">
-          <figcaption>Discussing the high tunnel trial with growers, Ag Progress Days 2026.</figcaption>
-        </figure>
-      </div>
+    </div>
+    <div class="side">
+      <figure>
+        <img src="images/agprogress-2025.jpg" alt="Explaining the high tunnel ASD experiment to visitors" loading="lazy">
+        <figcaption>Explaining the ASD experiment to visitors, Ag Progress Days 2025.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/agprogress-2026.jpg" alt="Visitors gathered around the high tunnel trial" loading="lazy">
+        <figcaption>Discussing the high tunnel trial with growers, Ag Progress Days 2026.</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -644,16 +591,16 @@
         sensors to check soil redox potential. We are still awaiting the results from the
         soil inspection report.
       </p>
-      <div class="figrow two">
-        <figure>
-          <img src="images/lancaster-asd.jpg" alt="Five people standing in the grower's tarped high tunnel" loading="lazy">
-          <figcaption>With the grower and colleagues after tarping the high tunnel.</figcaption>
-        </figure>
-        <figure>
-          <img src="images/lancaster-asd-2.jpg" alt="Spreading wheat middlings along the beds of a high tunnel" loading="lazy">
-          <figcaption>Spreading wheat middlings before incorporation and tarping.</figcaption>
-        </figure>
-      </div>
+    </div>
+    <div class="side">
+      <figure>
+        <img src="images/lancaster-asd.jpg" alt="Five people standing in the grower's tarped high tunnel" loading="lazy">
+        <figcaption>With the grower and colleagues after tarping the high tunnel.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/lancaster-asd-2.jpg" alt="Spreading wheat middlings along the beds of a high tunnel" loading="lazy">
+        <figcaption>Spreading wheat middlings before incorporation and tarping.</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -668,20 +615,20 @@
         and provide soil health benefits too. Later, we conducted an ASD application
         demonstration to show the grower how it is done in the high tunnel.
       </p>
-      <div class="figrow three">
-        <figure>
-          <img src="images/braddock-farms.jpg" alt="Growers gathered beside a high tunnel" loading="lazy">
-          <figcaption>Talking with local growers at Braddock Farms.</figcaption>
-        </figure>
-        <figure>
-          <img src="images/braddock-farms-2.jpg" alt="Spreading a carbon amendment inside a high tunnel" loading="lazy">
-          <figcaption>Incorporating the carbon amendment during the demonstration.</figcaption>
-        </figure>
-        <figure>
-          <img src="images/braddock-farms-3.jpg" alt="Tarped bed beside planted rows in a high tunnel" loading="lazy">
-          <figcaption>Tarped bed alongside the grower's planted rows.</figcaption>
-        </figure>
-      </div>
+    </div>
+    <div class="side">
+      <figure>
+        <img src="images/braddock-farms.jpg" alt="Growers gathered beside a high tunnel" loading="lazy">
+        <figcaption>Talking with local growers at Braddock Farms.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/braddock-farms-2.jpg" alt="Spreading a carbon amendment inside a high tunnel" loading="lazy">
+        <figcaption>Incorporating the carbon amendment during the demonstration.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/braddock-farms-3.jpg" alt="Tarped bed beside planted rows in a high tunnel" loading="lazy">
+        <figcaption>Tarped bed alongside the grower's planted rows.</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -689,9 +636,9 @@
 
 
 <!-- ============================================================
-     AWARDS  (education, awards, service, training)
+     EDUCATION  (education, awards, service, training)
      ============================================================ -->
-<section class="page" id="awards">
+<section class="page" id="education">
   <h2>Education, Awards and Service</h2>
 
   <h3 style="margin-top:0">Education</h3>
@@ -759,17 +706,78 @@
 
 
 <!-- ============================================================
-     HOBBIES
+     PUBLICATION
      ============================================================ -->
-<section class="page" id="hobbies">
-  <h2>Hobbies</h2>
+<section class="page" id="publication">
+  <h2>Publications</h2>
+  <p class="stamp" style="margin-top:-8px">
+    Full list on <a href="https://orcid.org/0009-0008-1554-0647">ORCID</a> and
+    <a href="https://scholar.google.com/citations?user=t64nxw8AAAAJ&amp;hl=en">Google Scholar</a>.
+  </p>
+
+  <ol class="pubs">
+    <li>
+      Neupane, B., Antonious, G. F., Dawood, M. H., &amp; <span class="me">Nepal, A.</span> (2025).
+      Bioaccumulation of heavy metals in hot pepper grown in biochar and animal
+      manure-amended soil. <span class="jrnl">Environmental Pollution and Management</span>.
+      <a href="https://doi.org/10.1016/j.epm.2025.09.006">doi:10.1016/j.epm.2025.09.006</a>
+    </li>
+    <li>
+      Antonious, G. F., <span class="me">Nepal, A.</span>, &amp; Neupane, B. (2025).
+      Remediation of Cd, Cu, and Zn metals in soil amended with biochar and animal manure
+      using a hyperaccumulator. <span class="jrnl">Pollutants, 5</span>(3), 22.
+      <a href="https://doi.org/10.3390/pollutants5030022">doi:10.3390/pollutants5030022</a>
+    </li>
+    <li>
+      Neupane, B., Antonious, G. F., Nzaramyimana, T., Acharya, S., Oli, D.,
+      <span class="me">Nepal, A.</span>, Dhakal, A., &amp; Makumbe, H. H. (2025).
+      Advancement in agriculture through radioisotopes: Current context, challenges and
+      future direction. <span class="jrnl">Journal of Agriculture and Food Research, 13</span>,
+      101966. <a href="https://doi.org/10.1016/j.jafr.2025.101966">doi:10.1016/j.jafr.2025.101966</a>
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, Antonious, G. F., Bebe, F. N., Webster, T. C.,
+      Gyawali, B. R., &amp; Neupane, B. (2024). Heavy metal accumulation in three varieties
+      of mustard grown under five soil management practices.
+      <span class="jrnl">Environments, 11</span>(4), 77.
+      <a href="https://doi.org/10.3390/environments11040077">doi:10.3390/environments11040077</a>
+    </li>
+    <li>
+      <span class="me">Nepal, A.</span>, Antonious, G. F., Gyawali, B. R., Webster, T. C.,
+      &amp; Bebe, F. (2024). Assessing the bioaccumulation of heavy metals in cabbage grown
+      under five soil amendments. <span class="jrnl">Pollutants, 4</span>(1), 58–71.
+      <a href="https://doi.org/10.3390/pollutants4010005">doi:10.3390/pollutants4010005</a>
+    </li>
+    <li>
+      Antonious, G. F., Chiluwal, A. C., &amp; <span class="me">Nepal, A.</span> (2023).
+      Chitin, biochar, and animal manures impact on eggplant and green pepper yield and
+      quality. <span class="jrnl">Agricultural Sciences, 14</span>, 368–383.
+      <a href="https://doi.org/10.4236/as.2023.143024">doi:10.4236/as.2023.143024</a>
+    </li>
+    <li>
+      Duwal, A., <span class="me">Nepal, A.</span>, Luitel, S., Acharya, S., Pathak, R.,
+      Poudel, P. R., &amp; Shrestha, J. (2019). Evaluation of coriander
+      (<i>Coriandrum sativum</i> L.) varieties for growth and yield parameters.
+      <span class="jrnl">Nepalese Journal of Agricultural Sciences, 18</span>, 36–46.
+    </li>
+  </ol>
+
+</section>
+
+
+<!-- ============================================================
+     GALLERY
+     Delete any <figure> block you don't want — the rest reflow
+     on their own. Add one by pasting another <figure> block in.
+     ============================================================ -->
+<section class="page" id="gallery">
+  <h2>Gallery</h2>
 
   <p>
     Outside professional life, I am an introvert who loves reading books, travelling,
     hiking and some adventures.
   </p>
 
-  <!-- Delete any <figure> block you don't want. They reflow on their own. -->
   <div class="figrow three">
     <figure>
       <img src="images/hobby-hiking.jpg" alt="Hiking on a wooded trail" loading="lazy">
@@ -813,19 +821,19 @@
 /* ============================================================
    Tab switching. Shows one page at a time and keeps the address
    bar in step, so the back button works and you can link
-   straight to a section, e.g. anjannepal.github.io/#extension
+   straight to a section, e.g. anjannepal.github.io/#gallery
    ============================================================ */
 (function () {
   var html = document.documentElement;
   html.className += ' js';
 
-  var pages = ['home', 'research', 'extension', 'awards', 'hobbies'];
+  var pages = ['home', 'research', 'education', 'publication', 'gallery'];
   var titles = {
-    home:      'Anjan Nepal',
-    research:  'Research · Anjan Nepal',
-    extension: 'Extension · Anjan Nepal',
-    awards:    'Awards · Anjan Nepal',
-    hobbies:   'Hobbies · Anjan Nepal'
+    home:        'Anjan Nepal',
+    research:    'Research and Extension · Anjan Nepal',
+    education:   'Education · Anjan Nepal',
+    publication: 'Publications · Anjan Nepal',
+    gallery:     'Gallery · Anjan Nepal'
   };
 
   function show(name, scroll) {
